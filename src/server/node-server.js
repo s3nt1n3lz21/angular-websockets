@@ -29,16 +29,17 @@ wss.on('connection', ws => {
 });
 
 onConnection = (ws) => {
-  ws.send(JSON.stringify({'id' : 'hello'}));
+  ws.send(JSON.stringify({'message' : 'hello'}));
   console.log('connected to websocket client')
 }
 
 onMessage = (messageAsString, ws) => {
+  console.log('message recieved from client: ', messageAsString)
+  // Convert the JSON string message into a JSON object
   const message = JSON.parse(messageAsString);
-  const outboundMessage = JSON.stringify(message);
-  // Send a message back to the websocket client
+  const outboundMessage = JSON.stringify({'message' : message.message + ' something'});
+  // Send a message back in JSON form to the websocket client
   ws.send(outboundMessage);
-  console.log('message recieved');
 }
 
 onError = () => {

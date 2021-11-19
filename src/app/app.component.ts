@@ -30,4 +30,8 @@ export class AppComponent {
     //   )
     // );
   }
+
+  sendMessage(message) {
+    this.dataService.sendMessage(message);
+  }
 }
