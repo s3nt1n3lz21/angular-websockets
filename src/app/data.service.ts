@@ -16,12 +16,13 @@ export class DataService {
   // Start the server by typing the following into the terminal
   // node node-server.js
 
-  private socket$: WebSocketSubject<Data> = webSocket(WS_ENDPOINT);
+  private socket$: WebSocketSubject<Data>;
   
   // Subscribe to the messages subject in other components
   messages$: Observable<Data>;
 
   constructor() {
+    this.connect();
     this.messages$.subscribe(
       msg => console.log('message received from server: ' + msg.message), // Called whenever there is a message from the server.
       err => console.log(err), // Called if at any point WebSocket API signals some kind of error.
