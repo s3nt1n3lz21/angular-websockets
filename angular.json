@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-websockets"
+    }
+  },
+  "defaultProject": "angular-websockets",
+  "cli": {
+    "analytics": false
+  }
 }
